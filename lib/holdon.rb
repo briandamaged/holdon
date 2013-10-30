@@ -5,14 +5,22 @@ module HoldOn
   end
 
 
-  def self.until(options = {})
+  def self.until(options = {}, &block)
+    self.breaker(options) do
+      result = yield
+      break result if result
+    end
+  end
+
+
+
+  def self.breaker(options = {})
     timeout  = options.fetch(:timeout, 30)
     interval = options.fetch(:interval, 1)
 
     start = Time.now
     loop do
-      result = yield
-      return result if result
+      yield
 
       # If the time remaining is less than the interval,
       # then we'll only sleep for the time remaining.
