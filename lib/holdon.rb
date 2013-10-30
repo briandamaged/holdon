@@ -11,7 +11,8 @@ module HoldOn
 
     start = Time.now
     loop do
-      break if yield
+      result = yield
+      return result if result
 
       # If the time remaining is less than the interval,
       # then we'll only sleep for the time remaining.
