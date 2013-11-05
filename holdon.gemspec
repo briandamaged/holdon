@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.name        = 'holdon'
-  s.version     = '0.0.1'
-  s.date        = '2013-10-29'
+  s.version     = '0.1.0'
+  s.date        = '2013-11-04'
   s.summary     = "HoldOn until a condition is true"
   s.description = "HoldOn until a condition is true"
   s.authors     = ["Brian Lauber"]
