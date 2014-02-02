@@ -13,6 +13,13 @@ module HoldOn
   end
 
 
+  def self.while(options = {}, &block)
+    self.breaker(options) do
+      result = yield
+      break result unless result
+    end
+  end
+
 
   def self.breaker(options = {})
     timeout  = options.fetch(:timeout, 30)
