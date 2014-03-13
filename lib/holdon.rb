@@ -24,6 +24,7 @@ module HoldOn
   def self.breaker(options = {})
     timeout  = options.fetch(:timeout, 30)
     interval = options.fetch(:interval, 1)
+    message = options.fetch(:message, '')
 
     start = Time.now
     loop do
@@ -35,7 +36,7 @@ module HoldOn
       if inv > 0
         sleep inv
       else
-        raise Timeout
+        raise Timeout, message
       end
 
     end
