@@ -1,7 +1,7 @@
 
 module HoldOn
 
-  class Timeout < Exception
+  class Timeout < StandardError
   end
 
 
