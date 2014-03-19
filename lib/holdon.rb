@@ -28,7 +28,10 @@ module HoldOn
     begin
       self.until(options, &block)
     rescue HoldOn::Timeout
+      return false
     end
+
+    return true
   end
 
 
@@ -39,7 +42,10 @@ module HoldOn
     begin
       self.while(options, &block)
     rescue HoldOn::Timeout
+      return false
     end
+
+    return true
   end
 
 
