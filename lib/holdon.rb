@@ -21,6 +21,28 @@ module HoldOn
   end
 
 
+  # This method just introduces a delay into the code that
+  # can be exited prematurely.  Useful when you are waiting
+  # for something that *might* happen.
+  def self.delay_until(options = {}, &block)
+    begin
+      self.until(options, &block)
+    rescue HoldOn::Timeout
+    end
+  end
+
+
+  # This method just introduces a delay into the code that
+  # can be exited prematurely.  Useful when you are waiting
+  # for something that *might* happen.
+  def self.delay_while(options = {}, &block)
+    begin
+      self.while(options, &block)
+    rescue HoldOn::Timeout
+    end
+  end
+
+
   def self.breaker(options = {})
     timeout  = options.fetch(:timeout, 30)
     interval = options.fetch(:interval, 1)
