@@ -52,7 +52,7 @@ module HoldOn
   def self.breaker(options = {})
     timeout  = options.fetch(:timeout, 30)
     interval = options.fetch(:interval, 1)
-    message = options.fetch(:message, '')
+    message  = options[:message]
 
     start = Time.now
     loop do
